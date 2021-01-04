@@ -7,6 +7,7 @@ public class ColorChanger : MonoBehaviour
     public Light light;
     public Color Currentcolor;
     public float CurrentIntensity;
+    public int opt;
 
     public Color GirlColor;
     public Color BoyColor;
@@ -38,6 +39,22 @@ public class ColorChanger : MonoBehaviour
     public void ItsAChristmas()
     {
         StartCoroutine(switchColor(ChristmasColor, ChristmasIntensity));
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (opt == 0)
+        {
+            StartCoroutine(switchColor(GirlColor, GirlIntensity));
+        }
+        else if (opt == 1)
+        {
+            StartCoroutine(switchColor(BoyColor, BoyIntensity));
+        }
+        else if (opt == 2)
+        {
+            StartCoroutine(switchColor(ChristmasColor, ChristmasIntensity));
+        }
     }
 
     IEnumerator switchColor(Color GivenColor, float GivenIntensity)
